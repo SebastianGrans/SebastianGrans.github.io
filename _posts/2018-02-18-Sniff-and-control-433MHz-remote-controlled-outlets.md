@@ -17,7 +17,7 @@ I bought a set of Luxorparts Mini remote sockets kit (Item: 50987) from the Swed
 
 <span style="margin-bottom: 0;"><b>**Note!**</b>
 <span style="color: darkred; margin-top: 0;">
-I struggled like hell to get this to work, but I finally got it working thanks to <a href=https://github.com/sui77/rc-switch/issues/194)>this</a> issue on Github. So if it doesn't work the first time, just keep on going and try different approaches. 
+I struggled like hell to get this to work, but I finally got it working thanks to [this](https://github.com/sui77/rc-switch/issues/194) issue on Github. So if it doesn't work the first time, just keep on going and try different approaches. 
 </span>
 </span>
 
@@ -36,37 +36,70 @@ I assume that you have some experience with the Arduino IDE.
 5. Compile and upload it to the Arduino. 
 6. Open the Serial monitor and press a button on the remote. You should then see something like this:
 
-	```
-	Decimal: 11840172 (24Bit) Binary: 101101001010101010101100 Tri-State: not applicable PulseLength: 386 microseconds Protocol: 4
-	Raw data: 2440,1048,508,264,1268,1048,504,1040,500,272,1276,1028,496,280,1272,272,1268,1044,512,264,1264,1032,500,276,1276,1036,504,272,1276,1036,496,268,1272,1040,496,280,1264,1048,504,272,1268,1044,500,1044,504,268,1272,272,1304,
-	```
+	~~~
+	Received 12414590 / 24bit Protocol: 4
+	data bits of pulse train duration: 37116
+	proposed protocol: { 387, { 1, 6 }, { 1, 3 }, { 3, 1 }, false }
+	====
+	first level down
+	2408,
+	1052,492,280,1252,1068,484,1060,484,1064,480,1068,500,276,1252,1064,492,
+	284,1260,1056,488,1056,488,288,1260,1056,484,1064,496,1052,496,280,1260,
+	284,1296,1020,484,1064,492,1056,508,1040,492,1056,504,1044,496,280,1264,
+	284
+	====
+	~~~
+
 	My remote had a cycle of 4 different signals it sent out for each button. The outlet seems to react to any of the signals. 
 
 7. Now you just have to make a table for each button. Below is a table of what I collected. The raw data is shown in the spoiler below the table. 
 
-|--------+-----------------------------------------------+--------------------------------------------------------------|
-| Button |                        On                     |                   Off                                        |
-|--------|:---------------------------------------------:|:------------------------------------------------------------:|
-| A      | <span class="mono">101101001010101010101100</span>  | <span class="mono">101111111000100010001100</span>     |
-|        | <span class="mono">101111101100010101101100</span>  | <span class="mono">101110110111000010111100</span>     | 
-|        | <span class="mono">101110010010010000011100</span>  | <span class="mono">101111010110111001111100</span>     | 
-|        | <span class="mono">101101111011110001011100</span>  | <span class="mono">101100110100000100101100</span>     | 
-| B      | <span class="mono">101101100101011011100101</span>  | <span class="mono">101100011001100110010101</span>     | 
-|        | <span class="mono">101111001110011100000101</span>  | <span class="mono">101101011101110111010101</span>     | 
-|        | <span class="mono">101110000011111100110101</span>  | <span class="mono">101110100001001001000101</span>     | 
-|        | <span class="mono">101100101111001111110101</span>  | <span class="mono">101100000000101111000101</span>     |  
-| C      | <span class="mono">101110110111000010111110</span>  | <span class="mono">101111101100010101101110</span>     | 
-|        | <span class="mono">101111010110111001111110</span>  | <span class="mono">101110010010010000011110</span>     | 
-|        | <span class="mono">101100110100000100101110</span>  | <span class="mono">101101111011110001011110</span>     | 
-|        | <span class="mono">101111111000100010001110</span>  | <span class="mono">101101001010101010101110</span>     | 
-| D      | <span class="mono">101100011001100110010111</span>  | <span class="mono">101111001110011100000111</span>     | 
-|        | <span class="mono">101101011101110111010111</span>  | <span class="mono">101110000011111100110111</span>     | 
-|        | <span class="mono">101110100001001001000111</span>  | <span class="mono">101100101111001111110111</span>     | 
-|        | <span class="mono">101100000000101111000111</span>  | <span class="mono">101101100101011011100111</span>     | 
-|--------+-----------------------------------------------------+--------------------------------------------------------+
+	<style>
+	table {
+	margin-right: auto;
+	margin-left: auto;
+	}
+	th {
+	border-bottom: 2px solid #000000;
+	font-weight: bold;
+	}
+	td {
+	padding-right: 1em;
+	padding-left: 1em;
+	}
+	</style> 
+
+
+	| Button |                        On                     |                   Off                                        |
+	|--------|:---------------------------------------------:|:------------------------------------------------------------:|
+	| A      | <span class="mono">101101001010101010101100</span>  | <span class="mono">101111111000100010001100</span>     |
+	|        | <span class="mono">101111101100010101101100</span>  | <span class="mono">101110110111000010111100</span>     | 
+	|        | <span class="mono">101110010010010000011100</span>  | <span class="mono">101111010110111001111100</span>     | 
+	|        | <span class="mono">101101111011110001011100</span>  | <span class="mono">101100110100000100101100</span>     | 
+	|		 |													   |                                                        |
+	| B      | <span class="mono">101101100101011011100101</span>  | <span class="mono">101100011001100110010101</span>     | 
+	|        | <span class="mono">101111001110011100000101</span>  | <span class="mono">101101011101110111010101</span>     | 
+	|        | <span class="mono">101110000011111100110101</span>  | <span class="mono">101110100001001001000101</span>     | 
+	|        | <span class="mono">101100101111001111110101</span>  | <span class="mono">101100000000101111000101</span>     |
+	|		 |													   |                                                        |  
+	| C      | <span class="mono">101110110111000010111110</span>  | <span class="mono">101111101100010101101110</span>     | 
+	|        | <span class="mono">101111010110111001111110</span>  | <span class="mono">101110010010010000011110</span>     | 
+	|        | <span class="mono">101100110100000100101110</span>  | <span class="mono">101101111011110001011110</span>     | 
+	|        | <span class="mono">101111111000100010001110</span>  | <span class="mono">101101001010101010101110</span>     |
+	|		 |													   |                                                        | 
+	| D      | <span class="mono">101100011001100110010111</span>  | <span class="mono">101111001110011100000111</span>     | 
+	|        | <span class="mono">101101011101110111010111</span>  | <span class="mono">101110000011111100110111</span>     | 
+	|        | <span class="mono">101110100001001001000111</span>  | <span class="mono">101100101111001111110111</span>     | 
+	|        | <span class="mono">101100000000101111000111</span>  | <span class="mono">101101100101011011100111</span>     | 
+
+
+8. Now you can start sending your own signals, without using the remote! Place the two files below (send.ino and output.ino) in a folder. Compile and upload! 
+
+9. Now you can try to send commands (the binary strings!) from the serial monitor and your RF controlled device should respond as if it was the original remote! 😀
+
+
 <details markdown="1">
 <summary><h3 style="display: inline">Intercepted remote signals</h3></summary>
-<p>
 
 ### A On
 ```
@@ -197,14 +230,11 @@ Raw data: 2416,1048,500,276,1276,1040,508,1040,488,284,1280,1044,508,1040,492,28
 
 ```
 
-</p>
 </details>
 
-8. Now you can start sending your own signals, without using the remote! Place the two files below in a folder. Compile and upload! 
 
 <details markdown="1">
 <summary><h3 style="display: inline">send.ino</h3></summary>
-<p>
 	
 ```c
 
@@ -252,12 +282,9 @@ Raw data: 2416,1048,500,276,1276,1040,508,1040,488,284,1280,1044,508,1040,492,28
 	}
 ```
 
-</p>
 </details>
 
-
 <details markdown="1"><summary><h3 style="display: inline">output.ino</h3></summary>
-<p markdown="1">
 
 ```c
 
@@ -337,10 +364,9 @@ static char * dec2binWzerofill(unsigned long Dec, unsigned int bitLength) {
 }
 ```
 
-</p>
 </details>
-	
-9. Now you can try to send commands from the serial monitor and your RF controlled device should respond as if it was the original remote! 😀
+
+
 
 
 ## Todo
