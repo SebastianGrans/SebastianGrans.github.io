@@ -44,9 +44,9 @@ I assume that you have some experience with the Arduino IDE.
 
 7. Now you just have to make a table for each button. Below is a table of what I collected. The raw data is shown in the spoiler below the table. 
 
-|--------+-----------------------------------------------+--------------------------------------------------|
-| Button |                        On                     |                   Off                            |
-|--------|:---------------------------------------------:|:------------------------------------------------:|
+|--------+-----------------------------------------------+--------------------------------------------------------------|
+| Button |                        On                     |                   Off                                        |
+|--------|:---------------------------------------------:|:------------------------------------------------------------:|
 | A      | <span class="mono">101101001010101010101100</span>  | <span class="mono">101111111000100010001100</span>     |
 |        | <span class="mono">101111101100010101101100</span>  | <span class="mono">101110110111000010111100</span>     | 
 |        | <span class="mono">101110010010010000011100</span>  | <span class="mono">101111010110111001111100</span>     | 
@@ -63,7 +63,7 @@ I assume that you have some experience with the Arduino IDE.
 |        | <span class="mono">101101011101110111010111</span>  | <span class="mono">101110000011111100110111</span>     | 
 |        | <span class="mono">101110100001001001000111</span>  | <span class="mono">101100101111001111110111</span>     | 
 |        | <span class="mono">101100000000101111000111</span>  | <span class="mono">101101100101011011100111</span>     | 
-
+|--------+-----------------------------------------------------+--------------------------------------------------------+
 <details markdown="1">
 <summary><h3 style="display: inline">Intercepted remote signals</h3></summary>
 <p>
@@ -251,6 +251,7 @@ Raw data: 2416,1048,500,276,1276,1040,508,1040,488,284,1280,1044,508,1040,492,28
 	    }
 	}
 ```
+
 </p>
 </details>
 
@@ -335,6 +336,7 @@ static char * dec2binWzerofill(unsigned long Dec, unsigned int bitLength) {
   return bin;
 }
 ```
+
 </p>
 </details>
 	
