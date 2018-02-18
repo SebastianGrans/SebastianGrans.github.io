@@ -15,11 +15,12 @@ Then I spotted some remote controlled outlets (about the same price as a Sonoff)
 
 I bought a set of Luxorparts Mini remote sockets kit (Item: 50987) from the Swedish electronics store Kjell & Co. I also bought a set of 433MHz receiver and transmitter modules from the same store. 
 
-<p style="margin-bottom: 0;"><b>**Note!**</b>
-<p style="color: darkred; margin-top: 0;">
+<span style="margin-bottom: 0;"><b>**Note!**</b>
+<span style="color: darkred; margin-top: 0;">
 I struggled like hell to get this to work, but I finally got it working thanks to <a href=https://github.com/sui77/rc-switch/issues/194)>this</a> issue on Github. So if it doesn't work the first time, just keep on going and try different approaches. 
-</p>
-</p>
+</span>
+</span>
+
 ## Materials
 * Arduino 
 * 433MHz receiver and transmitter modules
@@ -43,7 +44,7 @@ I assume that you have some experience with the Arduino IDE.
 
 7. Now you just have to make a table for each button. Below is a table of what I collected. The raw data is shown in the spoiler below the table. 
 
-
+|--------+-----------------------------------------------+--------------------------------------------------|
 | Button |                        On                     |                   Off                            |
 |--------|:---------------------------------------------:|:------------------------------------------------:|
 | A      | <span class="mono">101101001010101010101100</span>  | <span class="mono">101111111000100010001100</span>     |
@@ -66,6 +67,7 @@ I assume that you have some experience with the Arduino IDE.
 <details markdown="1">
 <summary><h3 style="display: inline">Intercepted remote signals</h3></summary>
 <p>
+
 ### A On
 ```
 Decimal: 11840172 (24Bit) Binary: 101101001010101010101100 Tri-State: not applicable PulseLength: 386 microseconds Protocol: 4
