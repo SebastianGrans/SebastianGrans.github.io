@@ -17,7 +17,7 @@ I bought a set of Luxorparts Mini remote sockets kit (Item: 50987) from the Swed
 
 <p style="margin-bottom: 0;"><b>**Note!**</b>
 <p style="color: darkred; margin-top: 0;">
-I struggled like hell to get this to work, but I finally got it working thanks to <a hred=https://github.com/sui77/rc-switch/issues/194)>this</a> issue on Github. So if it doesn't work the first time, just keep on going and try different approaches. 
+I struggled like hell to get this to work, but I finally got it working thanks to <a href=https://github.com/sui77/rc-switch/issues/194)>this</a> issue on Github. So if it doesn't work the first time, just keep on going and try different approaches. 
 </p>
 </p>
 ## Materials
@@ -42,7 +42,7 @@ I assume that you have some experience with the Arduino IDE.
 	My remote had a cycle of 4 different signals it sent out for each button. The outlet seems to react to any of the signals. 
 
 7. Now you just have to make a table for each button. Below is a table of what I collected. The raw data is shown in the spoiler below the table. 
-<center>
+
 
 | Button |                        On                     |                   Off                            |
 |--------|:---------------------------------------------:|:------------------------------------------------:|
@@ -196,142 +196,141 @@ Raw data: 2416,1048,500,276,1276,1040,508,1040,488,284,1280,1044,508,1040,492,28
 
 </p>
 </details>
-</center>
 
 8. Now you can start sending your own signals, without using the remote! Place the two files below in a folder. Compile and upload! 
 
-	<details><summary><h3 style="display: inline">send.ino</h3></summary>
-		<p>
-		
-	```c
+<details><summary><h3 style="display: inline">send.ino</h3></summary>
+<p>
 	
-		#include <RCSwitch.h>
-		
-		// Setup the RCSwitch instances for the receiever and transmitter
-		RCSwitch trans = RCSwitch();
-		RCSwitch recv = RCSwitch();
-		
-		// Input buffer
-		char data[25];
-		void setup() {
-		  Serial.begin(9600);
-		  
-		  // Transmitter is connected to pin 10 
-		  trans.enableTransmit(10);
-		  // Receiver is connected to pin 2 (Interrupt pin 0 for Arduino Uno)
-		  recv.enableReceive(digitalPinToInterrupt(2));
-		  
-		  // When sniffing, the protocol was found to be '4'. 
-		  // I'll have to dig into what that means. 
-		  trans.setProtocol(4);
-		  
-		  // This must also be set to the value you got.  
-		  trans.setPulseLength(380);
-		  
-		  // I arbitrarily set it to repeat a transmission 4 times. 
-		  trans.setRepeatTransmit(4);
-		
-		}
-		
-		void loop() {
-		  // I listen for signals at the same time as I can send them.
-		  if (recv.available()) {
-		    output(recv.getReceivedValue(), recv.getReceivedBitlength(), recv.getReceivedDelay(), recv.getReceivedRawdata(),recv.getReceivedProtocol());
-		    recv.resetAvailable();    
-		  }
-		  // Type in the bit-string into the serial monitor to send it.
-		  if (Serial.available() > 0) {
-		    Serial.readString().toCharArray(data, 25);
-		    Serial.print("I received: ");
-		    Serial.println(data);
-		    trans.send(data);
-		    }
-		}
-	```
-	</p>
-	</details>
-	<details><summary><h3 style="display: inline">output.ino</h3></summary>
-	<p>
+```c
+
+	#include <RCSwitch.h>
 	
-	```c
+	// Setup the RCSwitch instances for the receiever and transmitter
+	RCSwitch trans = RCSwitch();
+	RCSwitch recv = RCSwitch();
 	
-	/* Code from the rc-switch repository. 
-		Check it out here:
-		https://github.com/sui77/rc-switch/blob/master/examples/ReceiveDemo_Advanced/output.ino
-		*/
-		static const char* bin2tristate(const char* bin);
-	static char * dec2binWzerofill(unsigned long Dec, unsigned int bitLength);
-	
-	void output(unsigned long decimal, unsigned int length, unsigned int delay, unsigned int* raw, unsigned int protocol) {
-	
-	  const char* b = dec2binWzerofill(decimal, length);
-	  Serial.print("Decimal: ");
-	  Serial.print(decimal);
-	  Serial.print(" (");
-	  Serial.print( length );
-	  Serial.print("Bit) Binary: ");
-	  Serial.print( b );
-	  Serial.print(" Tri-State: ");
-	  Serial.print( bin2tristate( b) );
-	  Serial.print(" PulseLength: ");
-	  Serial.print(delay);
-	  Serial.print(" microseconds");
-	  Serial.print(" Protocol: ");
-	  Serial.println(protocol);
+	// Input buffer
+	char data[25];
+	void setup() {
+	  Serial.begin(9600);
 	  
-	  Serial.print("Raw data: ");
-	  for (unsigned int i=0; i<= length*2; i++) {
-	    Serial.print(raw[i]);
-	    Serial.print(",");
-	  }
-	  Serial.println();
-	  Serial.println();
-	}
-	
-	static const char* bin2tristate(const char* bin) {
-	  static char returnValue[50];
-	  int pos = 0;
-	  int pos2 = 0;
-	  while (bin[pos]!='\0' && bin[pos+1]!='\0') {
-	    if (bin[pos]=='0' && bin[pos+1]=='0') {
-	      returnValue[pos2] = '0';
-	    } else if (bin[pos]=='1' && bin[pos+1]=='1') {
-	      returnValue[pos2] = '1';
-	    } else if (bin[pos]=='0' && bin[pos+1]=='1') {
-	      returnValue[pos2] = 'F';
-	    } else {
-	      return "not applicable";
-	    }
-	    pos = pos+2;
-	    pos2++;
-	  }
-	  returnValue[pos2] = '\0';
-	  return returnValue;
-	}
-	
-	static char * dec2binWzerofill(unsigned long Dec, unsigned int bitLength) {
-	  static char bin[64]; 
-	  unsigned int i=0;
-	
-	  while (Dec > 0) {
-	    bin[32+i++] = ((Dec & 1) > 0) ? '1' : '0';
-	    Dec = Dec >> 1;
-	  }
-	
-	  for (unsigned int j = 0; j< bitLength; j++) {
-	    if (j >= bitLength - i) {
-	      bin[j] = bin[ 31 + i - (j - (bitLength - i)) ];
-	    } else {
-	      bin[j] = '0';
-	    }
-	  }
-	  bin[bitLength] = '\0';
+	  // Transmitter is connected to pin 10 
+	  trans.enableTransmit(10);
+	  // Receiver is connected to pin 2 (Interrupt pin 0 for Arduino Uno)
+	  recv.enableReceive(digitalPinToInterrupt(2));
 	  
-	  return bin;
+	  // When sniffing, the protocol was found to be '4'. 
+	  // I'll have to dig into what that means. 
+	  trans.setProtocol(4);
+	  
+	  // This must also be set to the value you got.  
+	  trans.setPulseLength(380);
+	  
+	  // I arbitrarily set it to repeat a transmission 4 times. 
+	  trans.setRepeatTransmit(4);
+	
 	}
-	```
-	</p>
-	</details>
+	
+	void loop() {
+	  // I listen for signals at the same time as I can send them.
+	  if (recv.available()) {
+	    output(recv.getReceivedValue(), recv.getReceivedBitlength(), recv.getReceivedDelay(), recv.getReceivedRawdata(),recv.getReceivedProtocol());
+	    recv.resetAvailable();    
+	  }
+	  // Type in the bit-string into the serial monitor to send it.
+	  if (Serial.available() > 0) {
+	    Serial.readString().toCharArray(data, 25);
+	    Serial.print("I received: ");
+	    Serial.println(data);
+	    trans.send(data);
+	    }
+	}
+```
+</p>
+</details>
+<details><summary><h3 style="display: inline">output.ino</h3></summary>
+<p>
+
+```c
+
+/* Code from the rc-switch repository. 
+	Check it out here:
+	https://github.com/sui77/rc-switch/blob/master/examples/ReceiveDemo_Advanced/output.ino
+	*/
+	static const char* bin2tristate(const char* bin);
+static char * dec2binWzerofill(unsigned long Dec, unsigned int bitLength);
+
+void output(unsigned long decimal, unsigned int length, unsigned int delay, unsigned int* raw, unsigned int protocol) {
+
+  const char* b = dec2binWzerofill(decimal, length);
+  Serial.print("Decimal: ");
+  Serial.print(decimal);
+  Serial.print(" (");
+  Serial.print( length );
+  Serial.print("Bit) Binary: ");
+  Serial.print( b );
+  Serial.print(" Tri-State: ");
+  Serial.print( bin2tristate( b) );
+  Serial.print(" PulseLength: ");
+  Serial.print(delay);
+  Serial.print(" microseconds");
+  Serial.print(" Protocol: ");
+  Serial.println(protocol);
+  
+  Serial.print("Raw data: ");
+  for (unsigned int i=0; i<= length*2; i++) {
+    Serial.print(raw[i]);
+    Serial.print(",");
+  }
+  Serial.println();
+  Serial.println();
+}
+
+static const char* bin2tristate(const char* bin) {
+  static char returnValue[50];
+  int pos = 0;
+  int pos2 = 0;
+  while (bin[pos]!='\0' && bin[pos+1]!='\0') {
+    if (bin[pos]=='0' && bin[pos+1]=='0') {
+      returnValue[pos2] = '0';
+    } else if (bin[pos]=='1' && bin[pos+1]=='1') {
+      returnValue[pos2] = '1';
+    } else if (bin[pos]=='0' && bin[pos+1]=='1') {
+      returnValue[pos2] = 'F';
+    } else {
+      return "not applicable";
+    }
+    pos = pos+2;
+    pos2++;
+  }
+  returnValue[pos2] = '\0';
+  return returnValue;
+}
+
+static char * dec2binWzerofill(unsigned long Dec, unsigned int bitLength) {
+  static char bin[64]; 
+  unsigned int i=0;
+
+  while (Dec > 0) {
+    bin[32+i++] = ((Dec & 1) > 0) ? '1' : '0';
+    Dec = Dec >> 1;
+  }
+
+  for (unsigned int j = 0; j< bitLength; j++) {
+    if (j >= bitLength - i) {
+      bin[j] = bin[ 31 + i - (j - (bitLength - i)) ];
+    } else {
+      bin[j] = '0';
+    }
+  }
+  bin[bitLength] = '\0';
+  
+  return bin;
+}
+```
+</p>
+</details>
 	
 9. Now you can try to send commands from the serial monitor and your RF controlled device should respond as if it was the original remote! 😀
 
