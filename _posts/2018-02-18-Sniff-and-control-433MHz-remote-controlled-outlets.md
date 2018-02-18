@@ -1,12 +1,14 @@
+---
+layout: post
+title: Sniffing and controlling 433MHz remote controlled outlets
+---
+
 <style>
 .mono {
   font-family: monospace;
 }
 
 </style>
-
-
-# Sniffing and controlling 433MHz remote controlled outlets
 I'm interested in home automation and previously I've fiddled with a Sonoff Basic switch. I flashed it with [Tasmota](https://github.com/arendst/Sonoff-Tasmota) and controlled it using the MQTT protocol and Mosquitto running on a Raspberry Pi. It works great, but the fact that the Sonoff switch is not CE rated makes me nervous (eventhough the build quality of the PCB looks fine in my layman eyes).
 
 Then I spotted some remote controlled outlets (about the same price as a Sonoff) and though that I could probably control them using a microcontroller and an RF transmitter. After searching the web I found tonnes of people that had done the same thing. 
