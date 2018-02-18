@@ -46,24 +46,25 @@ I assume that you have some experience with the Arduino IDE.
 
 | Button |                        On                     |                   Off                            |
 |--------|:---------------------------------------------:|:------------------------------------------------:|
-| A      | <p class="mono">101101001010101010101100</p>  | <p class="mono">101111111000100010001100</p>     |
-|        | <p class="mono">101111101100010101101100</p>  | <p class="mono">101110110111000010111100</p>     | 
-|        | <p class="mono">101110010010010000011100</p>  | <p class="mono">101111010110111001111100</p>     | 
-|        | <p class="mono">101101111011110001011100</p>  | <p class="mono">101100110100000100101100</p>     | 
-| B      | <p class="mono">101101100101011011100101</p>  | <p class="mono">101100011001100110010101</p>     | 
-|        | <p class="mono">101111001110011100000101</p>  | <p class="mono">101101011101110111010101</p>     | 
-|        | <p class="mono">101110000011111100110101</p>  | <p class="mono">101110100001001001000101</p>     | 
-|        | <p class="mono">101100101111001111110101</p>  | <p class="mono">101100000000101111000101</p>     |  
-| C      | <p class="mono">101110110111000010111110</p>  | <p class="mono">101111101100010101101110</p>     | 
-|        | <p class="mono">101111010110111001111110</p>  | <p class="mono">101110010010010000011110</p>     | 
-|        | <p class="mono">101100110100000100101110</p>  | <p class="mono">101101111011110001011110</p>     | 
-|        | <p class="mono">101111111000100010001110</p>  | <p class="mono">101101001010101010101110</p>     | 
-| D      | <p class="mono">101100011001100110010111</p>  | <p class="mono">101111001110011100000111</p>     | 
-|        | <p class="mono">101101011101110111010111</p>  | <p class="mono">101110000011111100110111</p>     | 
-|        | <p class="mono">101110100001001001000111</p>  | <p class="mono">101100101111001111110111</p>     | 
-|        | <p class="mono">101100000000101111000111</p>  | <p class="mono">101101100101011011100111</p>     | 
+| A      | <span class="mono">101101001010101010101100</span>  | <span class="mono">101111111000100010001100</span>     |
+|        | <span class="mono">101111101100010101101100</span>  | <span class="mono">101110110111000010111100</span>     | 
+|        | <span class="mono">101110010010010000011100</span>  | <span class="mono">101111010110111001111100</span>     | 
+|        | <span class="mono">101101111011110001011100</span>  | <span class="mono">101100110100000100101100</span>     | 
+| B      | <span class="mono">101101100101011011100101</span>  | <span class="mono">101100011001100110010101</span>     | 
+|        | <span class="mono">101111001110011100000101</span>  | <span class="mono">101101011101110111010101</span>     | 
+|        | <span class="mono">101110000011111100110101</span>  | <span class="mono">101110100001001001000101</span>     | 
+|        | <span class="mono">101100101111001111110101</span>  | <span class="mono">101100000000101111000101</span>     |  
+| C      | <span class="mono">101110110111000010111110</span>  | <span class="mono">101111101100010101101110</span>     | 
+|        | <span class="mono">101111010110111001111110</span>  | <span class="mono">101110010010010000011110</span>     | 
+|        | <span class="mono">101100110100000100101110</span>  | <span class="mono">101101111011110001011110</span>     | 
+|        | <span class="mono">101111111000100010001110</span>  | <span class="mono">101101001010101010101110</span>     | 
+| D      | <span class="mono">101100011001100110010111</span>  | <span class="mono">101111001110011100000111</span>     | 
+|        | <span class="mono">101101011101110111010111</span>  | <span class="mono">101110000011111100110111</span>     | 
+|        | <span class="mono">101110100001001001000111</span>  | <span class="mono">101100101111001111110111</span>     | 
+|        | <span class="mono">101100000000101111000111</span>  | <span class="mono">101101100101011011100111</span>     | 
 
-<details><summary><h3 style="display: inline">Intercepted remote signals</h3></summary>
+<details markdown="1">
+<summary><h3 style="display: inline">Intercepted remote signals</h3></summary>
 <p>
 ### A On
 ```
@@ -199,7 +200,8 @@ Raw data: 2416,1048,500,276,1276,1040,508,1040,488,284,1280,1044,508,1040,492,28
 
 8. Now you can start sending your own signals, without using the remote! Place the two files below in a folder. Compile and upload! 
 
-<details><summary><h3 style="display: inline">send.ino</h3></summary>
+<details markdown="1">
+<summary><h3 style="display: inline">send.ino</h3></summary>
 <p>
 	
 ```c
@@ -249,8 +251,10 @@ Raw data: 2416,1048,500,276,1276,1040,508,1040,488,284,1280,1044,508,1040,492,28
 ```
 </p>
 </details>
-<details><summary><h3 style="display: inline">output.ino</h3></summary>
-<p>
+
+
+<details markdown="1"><summary><h3 style="display: inline">output.ino</h3></summary>
+<p markdown="1">
 
 ```c
 
