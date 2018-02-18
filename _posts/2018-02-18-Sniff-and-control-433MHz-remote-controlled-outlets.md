@@ -27,7 +27,7 @@ I struggled like hell to get this to work, but I finally got it working thanks t
 I assume that you have some experience with the Arduino IDE. 
 
 1. Download [this](https://github.com/Martin-Laclaustra/rc-switch/tree/protocollessreceiver) repository and install it. <br>(Sketch ➔ Include Library ➔ Add .ZIP Library...)
-2. Connect the transmitter and receiver module according to the picture below. 
+2. Connect the transmitter and receiver module.
 3. Open the `ProtocolAnalyzeDemo.ino` sketch from the examples menu. <br>(File ➔ Examples ➔ rc-switch ➔ ProtocolAnalyzeDemo)
 4. Make sure that the receiver module is connected to the correct pin. (The pin number on the board is not the same as the number of the "interrupt pin". It depends on the Arduino model.)
 5. Compile and upload it to the Arduino. 
@@ -337,5 +337,4 @@ I assume that you have some experience with the Arduino IDE.
 ## Todo
 * Port the code so that I can run it directly on the Raspberry Pi
 * Create an interface for it so that I can control it with Mosquitto (MQTT Broker)
-
 
