@@ -4,12 +4,9 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
-
-### More Information
-
-A place to include any other types of information that you'd like to include about yourself.
+A guy from Sweden tinkering with things. <br>
+I have a BSc in Chemistry but currently pursuing a BSc in Computer Science. 
 
 ### Contact me
 
-[email@domain.com](mailto:email@domain.com)
+[sebastian.grans@domain.com](mailto:sebastian.grans+github@gmail.com)
