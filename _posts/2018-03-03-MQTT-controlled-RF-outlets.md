@@ -14,7 +14,7 @@ In the last [post](http://sebastiangrans.github.io/Sniff-and-control-433MHz-remo
 
 All the code is available here on my Github, [here](https://github.com/SebastianGrans/RF-MQTT). 
 
-##Let's begin! 
+## Let's begin! 
 
 In the last post, I used the [RCSwitch](https://github.com/sui77/rc-switch) library, which is already compatible with the Raspberry Pi! However, it relies on [wiringPi](http://wiringpi.com), which is a library to utilize the GPIO pins of the RPi. The pin numbering varies a lot between libraries and the actual physical layout on the Pi, but luckily someone made this nifty website: [pinout.xyz](https://pinout.xyz). In my project, I used the physical pin 13, which maps to pin 2 in wiringPi or pin 27 on the Broadcom chip itself. 
 
