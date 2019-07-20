@@ -26,7 +26,6 @@ I began by trying to upload the 'Hello World' of hardware, the Blink sketch, but
             raise FatalError('Failed to connect to %s: %s' % (self.CHIP_NAME, last_error))
         esptool.FatalError: Failed to connect to ESP8266: Invalid head of packet (0x00)
         esptool.FatalError: Failed to connect to ESP8266: Invalid head of packet (0x00)
-    
 </details>
 
 Some quick [Googling](https://www.youtube.com/watch?v=6uaIWZCRSz8) told me that, in order to program the ESP01, it must be put into programming mode. Which is achieved by pulling pin GPIO0 low when it is powered on. Fine... I cut Male-Female jumper wire in half and soldered one to `GND` and the other to `GPIO0` on the UART Adapter. 
@@ -34,42 +33,43 @@ Some quick [Googling](https://www.youtube.com/watch?v=6uaIWZCRSz8) told me that,
 I then tried programming the ESP by first connect the jumper cable, and then plugging it in the adapter. Sure enough, the upload works! To my dismay, the success was all but long lived...
 
 <details> 
-  <summary>esptool.py output</summary>
-    
-    esptool.py v2.6
-    2.6
-    esptool.py v2.6
-    Serial port /dev/cu.wchusbserial1420
-    Connecting........_____....._
-    Chip is ESP8266EX
-    Features: WiFi
-    MAC: 2c:f4:32:53:8d:c7
-    Uploading stub...
-    Running stub...
-    Stub running...
-    Configuring flash size...
-    Auto-detected Flash size: 1MB
-    Flash params set to 0x0320
-    Compressed 289728 bytes to 204022...
+<summary>esptool.py output</summary>
+~~~
+esptool.py v2.6
+2.6
+esptool.py v2.6
+Serial port /dev/cu.wchusbserial1420
+Connecting........_____....._
+Chip is ESP8266EX
+Features: WiFi
+MAC: 2c:f4:32:53:8d:c7
+Uploading stub...
+Running stub...
+Stub running...
+Configuring flash size...
+Auto-detected Flash size: 1MB
+Flash params set to 0x0320
+Compressed 289728 bytes to 204022...
 
-    Writing at 0x00000000... (7 %)
-    Writing at 0x00004000... (15 %)
-    Writing at 0x00008000... (23 %)
-    Writing at 0x0000c000... (30 %)
-    Writing at 0x00010000... (38 %)
-    Writing at 0x00014000... (46 %)
-    Writing at 0x00018000... (53 %)
-    Writing at 0x0001c000... (61 %)
-    Writing at 0x00020000... (69 %)
-    Writing at 0x00024000... (76 %)
-    Writing at 0x00028000... (84 %)
-    Writing at 0x0002c000... (92 %)
-    Writing at 0x00030000... (100 %)
-    Wrote 289728 bytes (204022 compressed) at 0x00000000 in 18.3 seconds (effective 126.7 kbit/s)...
-    Hash of data verified.
+Writing at 0x00000000... (7 %)
+Writing at 0x00004000... (15 %)
+Writing at 0x00008000... (23 %)
+Writing at 0x0000c000... (30 %)
+Writing at 0x00010000... (38 %)
+Writing at 0x00014000... (46 %)
+Writing at 0x00018000... (53 %)
+Writing at 0x0001c000... (61 %)
+Writing at 0x00020000... (69 %)
+Writing at 0x00024000... (76 %)
+Writing at 0x00028000... (84 %)
+Writing at 0x0002c000... (92 %)
+Writing at 0x00030000... (100 %)
+Wrote 289728 bytes (204022 compressed) at 0x00000000 in 18.3 seconds (effective 126.7 kbit/s)...
+Hash of data verified.
 
-    Leaving...
-    Hard resetting via RTS pin...
+Leaving...
+Hard resetting via RTS pin...
+~~~
 
 </details> 
 
@@ -97,7 +97,7 @@ I hope this helps someone.
 [^2]: The way the original poster added jumper wires is similar to how I solved it.
     
 <details> 
-  <summary>Some tags for the Google spider</summary>
+<summary>Some tags for the Google spider</summary>
     ESP01 upload works but doesn't run  
     ESP01 doesn't blink  
     Sketch doesn't run  
