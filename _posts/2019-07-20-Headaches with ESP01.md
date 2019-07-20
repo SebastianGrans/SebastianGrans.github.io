@@ -9,30 +9,9 @@ title: Headaches with the ESP01
 In a recent splurge on an unnamed chinese cheap-things online store, I bought an ESP01 and a ESP01 UART adapter. I have played around with ESP-12 development boards before which has a built in USB-to-Serial interface, so I thought this too would be as easy as plug-and-play. Boy, was I wrong!
 
 I began by trying to upload the 'Hello World' of hardware, the Blink sketch, but instantly hit a wall. 
-					
-<details> [^1]
-  <summary>esptool.py output</summary>
-    
-       esptool.py v2.6
-        2.6
-        esptool.py v2.6
-        Serial port /dev/cu.wchusbserial1420
-        Connecting........_____....._____....._____....._____....._____....._____.....____Traceback (most recent call last):
-          File "/Users/grans/Library/Arduino15/packages/esp8266/hardware/esp8266/2.5.2/tools/upload.py", line 25, in <module>
-            esptool.main(fakeargs)
-          File "/Users/grans/Library/Arduino15/packages/esp8266/hardware/esp8266/2.5.2/tools/esptool/esptool.py", line 2653, in main
-            esp.connect(args.before)
-          File "/Users/grans/Library/Arduino15/packages/esp8266/hardware/esp8266/2.5.2/tools/esptool/esptool.py", line 468, in connect
-            raise FatalError('Failed to connect to %s: %s' % (self.CHIP_NAME, last_error))
-        esptool.FatalError: Failed to connect to ESP8266: Invalid head of packet (0x00)
-        esptool.FatalError: Failed to connect to ESP8266: Invalid head of packet (0x00)
-</details>
-
-Some quick [Googling](https://www.youtube.com/watch?v=6uaIWZCRSz8) told me that, in order to program the ESP01, it must be put into programming mode. Which is achieved by pulling pin GPIO0 low when it is powered on. Fine... I cut Male-Female jumper wire in half and soldered one to `GND` and the other to `GPIO0` on the UART Adapter. 
-    
-I then tried programming the ESP by first connect the jumper cable, and then plugging it in the adapter. Sure enough, the upload works! To my dismay, the success was all but long lived...
-
-<details> 
+	
+{::options parse_block_html="true" /}
+<details markdown="1"> 
 <summary>esptool.py output</summary>
 ~~~
 esptool.py v2.6
@@ -72,6 +51,10 @@ Hard resetting via RTS pin...
 ~~~
 
 </details> 
+
+Some quick [Googling](https://www.youtube.com/watch?v=6uaIWZCRSz8) told me that, in order to program the ESP01, it must be put into programming mode. Which is achieved by pulling pin GPIO0 low when it is powered on. Fine... I cut Male-Female jumper wire in half and soldered one to `GND` and the other to `GPIO0` on the UART Adapter. 
+    
+I then tried programming the ESP by first connect the jumper cable, and then plugging it in the adapter. Sure enough, the upload works! To my dismay, the success was all but long lived...
 
 After disconnecting the jumper wires and power cycling the ESP nothing happened. No blinking. My initial thought was that maybe the predefined pin `LED_BUILTIN` was wrong and, to no avail, tried different pin numbers. After lots of Googling and trying various settings, such as DOUT flash mode, changing upload speeds, etc, I accepted defeat and called it quits for the night.
     
