@@ -10,9 +10,7 @@ In a recent splurge on an unnamed chinese cheap-things online store, I bought an
 
 I began by trying to upload the 'Hello World' of hardware, the Blink sketch, but instantly hit a wall. 
 	
-{::options parse_block_html="true" /}
-<details markdown="1"> 
-<summary>esptool.py output</summary>
+<details markdown="1"><summary>ESPTool Output</summary>
 ~~~
 esptool.py v2.6
 2.6
@@ -79,8 +77,7 @@ I hope this helps someone.
 [^1]: This is with "ESP8266 core for Arduino 2.5.2". It will be important later.
 [^2]: The way the original poster added jumper wires is similar to how I solved it.
     
-<details> 
-<summary>Some tags for the Google spider</summary>
+<details markdown="1"><summary>Some tags for the Google spider</summary>
     ESP01 upload works but doesn't run  
     ESP01 doesn't blink  
     Sketch doesn't run  
