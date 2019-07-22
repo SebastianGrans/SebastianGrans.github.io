@@ -2,10 +2,10 @@
 layout: post
 title: Headaches with the ESP01
 ---
-
+<center>
 <img src="{{ site.baseurl }}/images/ESP01/ESP-01.png" alt="ESP01 and a USB-to-Serial Adapter" style="width: 400px;"/>
+</center>
 
-# ESP01 
 In a recent splurge on an unnamed chinese cheap-things online store, I bought an ESP01 and a ESP01 UART adapter. I have played around with ESP-12 development boards before which has a built in USB-to-Serial interface, so I thought this too would be as easy as plug-and-play. Boy, was I wrong!
 
 I began by trying to upload the 'Hello World' of hardware, the Blink sketch, but instantly hit a wall. 

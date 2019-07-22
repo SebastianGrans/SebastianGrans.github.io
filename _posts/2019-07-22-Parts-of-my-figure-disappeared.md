@@ -3,18 +3,18 @@ layout: post
 title: Parts of my figure disappeared
 ---
 
-<img src="{{ site.baseurl }}/images/20190722-Latex-pdf-issue/img.png" alt="Pinhole camera" style="width: 400px;"/>
-
-# Parts of my figure disappeared!
-
-I always try my best to always use vector graphics when I write anything in Latex. If I am making plots, my pipeline is as follows
-
 <center>
-1. 		Make the plot in Matplotlib
-2. 		Save it as a PDF
-3. 		Tweak it in Illustrator
-4. 		Save it as a PDF again
+<img src="{{ site.baseurl }}/images/20190722-Latex-pdf-issue/img.png" alt="Pinhole camera" style="width: 400px;"/>
 </center>
+
+**TL;DR:** Did you include a figure as a PDF in latex, and part of the figure is missing? Try converting it to PostScript using `pdf2ps`. 
+
+I always try my best to use vector graphics when I write anything in Latex. If I am making plots, my pipeline is as follows
+
+1. Make the plot in Matplotlib  
+2. Save it as a PDF  
+3. Tweak it in Illustrator
+4. Save it as a PDF again
 
 This time I was making the figure above, from scratch in Illustrator. As you can see, there are some regular raster images included into the vector graphic. As I included it in my latex document though, the image on the back of the box had disappeared. It was still visible when the file was viewed separately. 
 
@@ -25,9 +25,9 @@ Hope this help someone.
     
 <details> 
   <summary>Some tags for the Google spider</summary>
-    image disappeared from pdf latex
-    includegraphics pdf latex
-    part missing from graphics
-    missing figure from pdf
+    image disappeared from pdf latex  
+    includegraphics pdf latex  
+    part missing from graphics  
+    missing figure from pdf  
     (I have no idea if these work)
 </details> 
