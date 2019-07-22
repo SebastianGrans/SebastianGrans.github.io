@@ -5,8 +5,10 @@ permalink: /about/
 ---
 
 A guy from Sweden tinkering with things. <br>
-I have a BSc in Chemistry but currently pursuing a BSc in Computer Science. 
+BSc in Chemistry. 
+MSc in Computer Science. 
+PhD Student at NTNU in Trondheim, Norway.
 
 ### Contact me
 
-[sebastian.grans@domain.com](mailto:sebastian.grans+github@gmail.com)
+[sebastian.grans@gmail.com](mailto:sebastian.grans+github@gmail.com)

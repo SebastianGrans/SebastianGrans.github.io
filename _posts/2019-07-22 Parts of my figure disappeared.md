@@ -16,9 +16,9 @@ I always try my best to always use vector graphics when I write anything in Late
 4. 		Save it as a PDF again
 </center>
 
-This time I was making the figure above, from scratch in Illustrator. As you can see, there are some regular raster images included into the vector graphic. As I included it in my latex document though, the image on the back of the box had disappeared. It was still visible when the file was viewed seperately. 
+This time I was making the figure above, from scratch in Illustrator. As you can see, there are some regular raster images included into the vector graphic. As I included it in my latex document though, the image on the back of the box had disappeared. It was still visible when the file was viewed separately. 
 
-When I googled this, most people had issues with fonts, which seem to be caused by the font not being embedded into the PDF. This didn't really help me, but thankfully I found a comment in [this](https://stackoverflow.com/questions/2370864/problem-when-using-latex-includegraphics-with-some-pdf-files) thread, suggesting to convert the files to EPS (Encapsulated PostScript). I simply converted it to PS (PostScript), and that seemed to work just as well. For this I used `pdf2ps`. 
+When I googled this, most people had issues with fonts, which seem to be caused by the font not being embedded into the PDF. This didn't really help me, but thankfully I found a comment by [Norman Ramsey](https://stackoverflow.com/users/41661/norman-ramsey) in [this](https://stackoverflow.com/questions/2370864/problem-when-using-latex-includegraphics-with-some-pdf-files) thread, suggesting to convert the files to EPS (Encapsulated PostScript). I simply converted it to PS (PostScript), and that seemed to work just as well. For this I used `pdf2ps`. 
 
 Hope this help someone. 
 
