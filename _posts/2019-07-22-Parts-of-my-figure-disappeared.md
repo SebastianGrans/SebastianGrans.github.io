@@ -4,10 +4,12 @@ title: Parts of my figure disappeared
 ---
 
 <center>
-<img src="{{ site.baseurl }}/images/20190722-Latex-pdf-issue/img.png" alt="Pinhole camera" style="width: 400px;"/>
+<img src="{{ site.baseurl }}/images/20190722-Latex-pdf-issue/img.png" alt="Pinhole camera" style="display: block;"/>
 </center>
 
+<div markdown="1" style="display:block; background-color:#eff0f1; border-radius: 3px; padding: 0.001em 8px;">
 **TL;DR:** Did you include a figure as a PDF in latex, and part of the figure is missing? Try converting it to PostScript using `pdf2ps`. 
+</div>
 
 I always try my best to use vector graphics when I write anything in Latex. If I am making plots, my pipeline is as follows
 

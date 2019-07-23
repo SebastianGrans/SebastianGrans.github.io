@@ -4,7 +4,7 @@ title: Installing OpenCV on MacOS 10.11 with Homebrew
 ---
 
 <center>
-<img src="{{ site.baseurl }}/images/opencv.jpg" alt="OpenCV Logo" style="width: 400px;"/>
+<img src="{{ site.baseurl }}/images/opencv.jpg" alt="OpenCV Logo" style="display: block;"/>
 </center>
 ## Intro
 I wanted to play around with OpenCV, so I found [this](https://opencv-java-tutorials.readthedocs.io/en/latest/01-installing-opencv-for-java.html#install-opencv-3-x-under-macos) guide. Everything seemed to work fine, but when brew started to install `tbb` I got the error below. 
