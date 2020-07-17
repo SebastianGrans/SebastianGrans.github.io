@@ -18,6 +18,8 @@ img: /images/20200717-Grippers/headerimg.gif
 
 This is a tutorial which demonstrates how to interface with a YuMi robot using [Robot Operating System 2](https://www.ros.org/) (ROS) and the [abb_librws](https://github.com/ros-industrial/abb_librws) library.
 
+The final ROS2 package is available on [this](https://github.com/SebastianGrans/SmartGripper-Demo) GitHub repo.
+
 I've tried to make the demo as bare bone as possible and consists of a single `.cpp` file.
 
 ## Background
