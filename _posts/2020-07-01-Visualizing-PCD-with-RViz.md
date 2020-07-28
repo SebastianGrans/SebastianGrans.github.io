@@ -7,6 +7,8 @@ title: Visualizing point clouds with RViz2 and Python
 <img src="{{ site.baseurl }}/images/20200701-PCD-RViz/headerimg.png" alt="Visualizing point clouds with RViz2" style="display: block;"/>
 </center>
 
+**NOTE:** This post is slightly outdated. I've updated the Github repo [this](https://github.com/SebastianGrans/ROS2-Point-Cloud-Demo), and it now also demonstrates how to subscribe to `PointCloud2` messages. 
+
 While trying to learn how to use ROS2 and in extension RViz2 I discovered that there is a severe lack of documentation on how to use it with Python. Therefore I thought that I could write some ROS2 Pythons tutorials while I learn. In that way, you don't have to suffer the way I did ;) 
 
 In this tutorial I will show you how to convert a Numpy array into a `PointCloud2` message, publish it, and visualize it using RViz.
@@ -20,7 +22,7 @@ I can also recommend [this](https://github.com/tingelst/ros2_seminar_spring_2020
 
 ## Let's get started! 
 
-(**Note:** All source code is available in [this](https://github.com/SebastianGrans/Point-Cloud-Publisher) GitHub repo, but you should be able to replicate it entirely by following this tutorial. )
+(**Note:** All source code is available in [this](https://github.com/SebastianGrans/ROS2-Point-Cloud-Demo) GitHub repo, but you should be able to replicate it entirely by following this tutorial. )
 
 I assume that you already have a [workspace](https://index.ros.org/doc/ros2/Tutorials/Workspace/Creating-A-Workspace/) with a `src` folder. In that folder, create a package by running:
 
