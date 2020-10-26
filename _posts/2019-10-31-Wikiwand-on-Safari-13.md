@@ -8,11 +8,11 @@ title: Wikiwand on Safari 13
 </center>If you use [AdGuard for Safari](https://apps.apple.com/us/app/adguard-for-safari/id1440147259?mt=12) as your ad blocker, add the filter to the "User filter" to redirect any Wikipedia article to Wikiwand. 
 
 
-<div markdown="1" style="display:block; background-color:#eff0f1; border-radius: 3px; padding: 0px 8px;">
+<div markdown="1" style="display:block; background-color:#eff0f1; border-radius: 3px; padding: 5px 20px; margin: 10px;">
 **TL;DR** If you use [AdGuard for Safari](https://apps.apple.com/us/app/adguard-for-safari/id1440147259?mt=12) as your ad blocker, add the filter to the "User filter" to redirect any Wikipedia article to Wikiwand. 
 </div>
 
-<div markdown="1" style="display:block; background-color:#eff0f1; border-radius: 3px; padding: 0px 8px;">
+<div markdown="1" style="display:block; background-color:#eff0f1; border-radius: 3px; padding: 5px 20px; margin: 10px;">
 **Update:** For some reason, it has stopped working on my MacBook that runs Catalina. It still runs on another MacBook running Mojave. I'll look into it some day.
 </div>
 

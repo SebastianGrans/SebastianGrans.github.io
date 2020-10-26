@@ -20,7 +20,7 @@ html {
 body {
 	background: $white;
   // font: 18px/1.4 $helvetica;
-  font: 18px/1.4 Palatino, 'Palatino Linotype', serif;
+  font-family: $helvetica;
   color: $darkGray;
 }
 
@@ -68,7 +68,7 @@ h4 {
 p {
   margin: 15px 0;
   hyphens: auto;
-  font: 18px/1.4 Palatino, 'Palatino Linotype', serif;
+  font-family: $helvetica;
 }
 
 a {
@@ -283,7 +283,7 @@ nav {
     border-left: 2px solid $gray;
     padding: 0.1em 1em;
     color: $gray;
-    font-size: 22px;
+    // font-size: 18px;
     font-style: italic;
   }
 
