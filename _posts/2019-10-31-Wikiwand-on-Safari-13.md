@@ -15,6 +15,9 @@ title: Wikiwand on Safari 13
 <div markdown="1" style="display:block; background-color:#eff0f1; border-radius: 3px; padding: 5px 20px; margin: 10px;">
 **Update:** For some reason, it has stopped working on my MacBook that runs Catalina. It still runs on another MacBook running Mojave. I'll look into it some day.
 </div>
+<div markdown="1" style="display:block; background-color:#eff0f1; border-radius: 3px; padding: 5px 20px; margin: 10px;">
+**Update 2:** I have now updated the rule so that it works again! There's a bug in the AdGuard Base filter. [Link to issue](https://github.com/AdguardTeam/AdguardFilters/issues/79855)
+</div>
 
 
 As of Safari 13, only extensions from the App Store can be used. 
@@ -27,6 +30,7 @@ In order for me to stay sane on the web today, I need to have an ad blocker (I h
 With the filter syntax documentation, and some very basic JavaScript we can create this filter: 
 
 ```javascript
+@@||wikipedia.org^$generichide,badfilter
 wikipedia.org#%#if (window.location.search === "") { var lang = window.location.hostname.split('.')[0]; var article = window.location.pathname.split('/')[2]; window.location.href = "http://www.wikiwand.com/" + lang + "/" + article; } 
 ```
 
