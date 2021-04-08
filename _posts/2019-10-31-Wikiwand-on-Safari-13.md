@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Wikiwand on Safari 13
+title: Wikiwand on Safari
 ---
 
 <center>
