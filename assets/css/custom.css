@@ -1,4 +1,5 @@
 /* Increase the default font size */
 header a {
     font-family: 'Consolas', monospace;
+    font-size: 1.2em;
 }
