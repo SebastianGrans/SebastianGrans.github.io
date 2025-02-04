@@ -7,6 +7,10 @@ showDate: false
 showReadingTime: false
 ---
 
+My name is Sebastian Grans and I work as a software developer at [Zivid](https://www.zivid.com/).
+
+Checkout my Github profile here: [{{< icon "github" >}}](http://github.com/SebastianGrans)
+
 ```python
-# TODO: Add details about me
+# TODO: Add more details about me
 ```
