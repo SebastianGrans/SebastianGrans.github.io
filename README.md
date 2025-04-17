@@ -6,6 +6,12 @@
 hugo new content content/posts/something.md
 ```
 
+I tend to prepend them with dates, to make the `posts` less chaotic.
+
+```bash
+hugo new content content/posts/$(date "+%Y-%m-%d")-some-post-name.md  
+```
+
 It will create a file marked as `draft = true` which will not be published.
 
 <https://gohugo.io/getting-started/quick-start/#add-content>
