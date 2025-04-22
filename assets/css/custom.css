@@ -2,4 +2,43 @@
 header a {
     font-family: 'Consolas', monospace;
     font-size: 1.2em;
+
+}
+
+header nav div a {
+    font-size: 2em;
+    padding: .3em .25em .3em .25em;
+    background-color: rgba(var(--color-neutral-100));
+    border-radius: 0.2em;
+    font-weight: 600;
+}
+
+header nav div a:is(.dark *) {
+    background-color: rgba(var(--color-neutral-700));
+}
+
+
+/* Remove the tick-marks around code snippets */
+.prose :where(code)::before {
+    all: unset;
+}
+
+.prose :where(code)::after {
+    all: unset;
+}
+
+
+/* Add bg color around inline code snippets. */
+.prose :where(code):not(:where([class~="highlight"], [class~="highlight"] *)) {
+    color: rgba(var(--color-primary-600));
+    white-space: pre;
+    padding: .15em .25em .05em .25em;
+    background-color: rgba(var(--color-neutral-100));
+    border-radius: 0.3em;
+}
+
+/* Slightly different colors when in darkmode */
+.prose :where(code):not(:where([class~="highlight"], [class~="highlight"] *)):is(.dark *) {
+    color: rgba(var(--color-primary-400));
+    background-color: rgba(var(--color-neutral-700), 0.5);
 }
